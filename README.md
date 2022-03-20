@@ -1,2 +1,2 @@
 # rs-admin
-This is the admin site of the review system
+This is the admin site frontend of the review system
