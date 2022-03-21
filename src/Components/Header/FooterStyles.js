@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-
 export const Box = styled.div`
-padding: 80px 60px;
-background: black;
+padding: 60px 60px;
+background: #ECECEC;
 position: absolute;
 bottom: 0;
-width: 100%;
+width: 92%;
 
 
 @media (max-width: 1000px) {
@@ -27,13 +26,15 @@ export const Column = styled.div`
 display: flex;
 flex-direction: column;
 text-align: left;
-margin-left: 60px;
+margin-left:60px;
 `;
+
+
 
 export const Row = styled.div`
 display: grid;
 grid-template-columns: repeat(auto-fill,
-						minmax(250px, 1fr));
+						minmax(200px, 1fr));
 grid-gap: 20px;
 
 @media (max-width: 1000px) {
@@ -42,21 +43,44 @@ grid-gap: 20px;
 }
 `;
 
+export const SubRow = styled.div`
+display: grid;
+grid-template-columns: repeat(auto-fill,
+						minmax(20px, 1fr));
+grid-gap: 20px;
+
+@media (max-width: 1000px) {
+	grid-template-columns: repeat(auto-fill,
+						minmax(20px, 1fr));
+}
+`;
+
+
 export const FooterLink = styled.a`
-color: #fff;
 margin-bottom: 20px;
-font-size: 18px;
+font-size: 12px;
 text-decoration: none;
+color: black;
+font-style: italic;
 font-family: 'Asap', sans-serif;
 &:hover {
-	color: green;
+	color: blue;
 	transition: 200ms ease-in;
 }
 `;
 
+export const FooterText = styled.p`
+margin-bottom: 20px;
+font-size: 12px;
+color: black;
+font-style: italic;
+font-family: 'Asap', sans-serif;
+`;
+
 export const Heading = styled.p`
-font-size: 24px;
-color: #fff;
+font-size: 16px;
 margin-bottom: 40px;
 font-weight: bold;
+font-family: 'Asap', sans-serif;
 `;
+

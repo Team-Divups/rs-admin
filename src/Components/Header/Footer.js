@@ -1,4 +1,5 @@
 import React from "react";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import {
 Box,
 Container,
@@ -6,13 +7,20 @@ Row,
 Column,
 FooterLink,
 Heading,
+SubRow,
+FooterText,
 } from "./FooterStyles";
 
 const Footer = () => {
 return (
-	<Box>
+	<>
+		<Box>
 	<Container>
 		<Row>
+		<Column>
+ 	       <img src='../Assets/logo.png'/> 
+		</Column>
+
 		<Column>
 			<Heading>Learn More</Heading>
 			<FooterLink href="#">About BizStat</FooterLink>
@@ -20,47 +28,33 @@ return (
 			<FooterLink href="#">Privacy Policy</FooterLink>
 			<FooterLink href="#">Other</FooterLink>
 		</Column>
+
 		<Column>
 			<Heading>Contact us</Heading>
-			<FooterLink>Technical help - <b>011 657 1298</b></FooterLink>
-			<FooterLink>head Office- <b>011 657 1299</b></FooterLink>
-			<FooterLink>Mail - <b>BizStat@cgen.net</b></FooterLink>
+			<FooterText>Technical help - <b>011 657 1298</b></FooterText>
+			<FooterText>head Office- <b>011 657 1299</b></FooterText>
+			<FooterText>Mail - <b>BizStat@cgen.net</b></FooterText>
 			<FooterLink href="#">Website</FooterLink>
 		</Column>
+
 		<Column>
 			<Heading>Social Media</Heading>
-			<FooterLink href="#">
-			<i className="fab fa-facebook-f">
-				<span style={{ marginLeft: "10px" }}>
-				Facebook
-				</span>
-			</i>
-			</FooterLink>
-			<FooterLink href="#">
-			<i className="fab fa-instagram">
-				<span style={{ marginLeft: "10px" }}>
-				Instagram
-				</span>
-			</i>
-			</FooterLink>
-			<FooterLink href="#">
-			<i className="fab fa-twitter">
-				<span style={{ marginLeft: "10px" }}>
-				Twitter
-				</span>
-			</i>
-			</FooterLink>
-			<FooterLink href="#">
-			<i className="fab fa-youtube">
-				<span style={{ marginLeft: "10px" }}>
-				Youtube
-				</span>
-			</i>
-			</FooterLink>
+			<SubRow>
+			<FaFacebook/>
+			<FaInstagram/>
+			<FaTwitter/>
+			<FaYoutube/>
+			</SubRow>
 		</Column>
+
 		</Row>
 	</Container>
-	</Box>
+	<br/>
+	<hr/>
+	<br/>
+	<FooterLink>@2022 Copyright: BizStat.com</FooterLink>
+	</Box>		
+	</>
 );
 };
 
