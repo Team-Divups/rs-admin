@@ -18,7 +18,7 @@ return (
 	<Container>
 		<Row>
 		<Column>
- 	       <img src='../Assets/logo.png'/> 
+		   <img  src='../Assets/logo.png' alt='logo'/> 
 		</Column>
 
 		<Column>
@@ -31,8 +31,8 @@ return (
 
 		<Column>
 			<Heading>Contact us</Heading>
-			<FooterText>Technical help - <b>011 657 1298</b></FooterText>
-			<FooterText>head Office- <b>011 657 1299</b></FooterText>
+			<FooterText>Technical Help - <b>011 657 1298</b></FooterText>
+			<FooterText>Head Office- <b>011 657 1299</b></FooterText>
 			<FooterText>Mail - <b>BizStat@cgen.net</b></FooterText>
 			<FooterLink href="#">Website</FooterLink>
 		</Column>

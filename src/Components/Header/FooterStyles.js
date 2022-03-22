@@ -26,15 +26,14 @@ export const Column = styled.div`
 display: flex;
 flex-direction: column;
 text-align: left;
-margin-left:60px;
+margin-left:50px;
 `;
-
 
 
 export const Row = styled.div`
 display: grid;
 grid-template-columns: repeat(auto-fill,
-						minmax(200px, 1fr));
+						minmax(230px, 1fr));
 grid-gap: 20px;
 
 @media (max-width: 1000px) {
@@ -64,7 +63,7 @@ color: black;
 font-style: italic;
 font-family: 'Asap', sans-serif;
 &:hover {
-	color: blue;
+	color: #7DA7D9;
 	transition: 200ms ease-in;
 }
 `;
