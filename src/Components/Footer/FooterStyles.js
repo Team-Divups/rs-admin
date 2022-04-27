@@ -5,6 +5,7 @@ padding: 60px 60px;
 background: #ECECEC;
 position: absolute;
 bottom: 0;
+height:210px;
 width: 92%;
 
 
@@ -19,7 +20,7 @@ export const Container = styled.div`
 	justify-content: center;
 	max-width: 1000px;
 	margin: 0 auto;
-	/* background: red; */
+	height:185px;
 `
 
 export const Column = styled.div`

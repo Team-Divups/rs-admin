@@ -18,7 +18,8 @@ return (
 	<Container>
 		<Row>
 		<Column>
-		   <img  src='../Assets/logo.png' alt='logo'/> 
+		   <img  src='../Assets/logo.png' alt='logo' height='120px' width='120px'/> 
+		   <Heading style={{paddingLeft:'24px'}}>BizStat</Heading>
 		</Column>
 
 		<Column>
@@ -52,7 +53,7 @@ return (
 	<br/>
 	<hr/>
 	<br/>
-	<FooterLink>@2022 Copyright: BizStat.com</FooterLink>
+	<FooterLink style={{justifyContent:'center',display:'flex'}}>@2022 Copyright: BizStat.com</FooterLink>
 	</Box>		
 	</>
 );
