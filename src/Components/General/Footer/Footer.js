@@ -15,7 +15,7 @@ const Footer = () => {
 return (
 	<>
 		<Box>
-	<Container>
+	    <Container>
 		<Row>
 		<Column>
 		   <img  src='../Assets/logo.png' alt='logo' height='120px' width='120px'/> 
