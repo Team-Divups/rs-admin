@@ -11,7 +11,7 @@ import {
 } from './Styles';
 
 
-const EditClient = () => {
+const AddClient = () => {
   return(
     <>
     <ContainerWrap>
@@ -25,7 +25,7 @@ const EditClient = () => {
        <Form>
         <Form.Group controlId="form.Name">
             <Form.Label><ContainerText >First Name</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={1}/>
+            <Form.Control as="textarea" rows={1} />
         </Form.Group><br/>
         <Form.Group controlId="form.Email">
             <Form.Label><ContainerText>Email</ContainerText></Form.Label>
@@ -44,8 +44,8 @@ const EditClient = () => {
 
       <br/>
     
-      <Button1 size="sm">Save</Button1>
-      <Button2 size="sm">Discard</Button2>
+      <Button1 size="sm">Update</Button1>
+      <Button2 size="sm">Back</Button2>
 
     </ContainerBox>
     </>

@@ -11,7 +11,7 @@ import {
 } from './Styles';
 
 
-const InviteClient = () => {
+const ViewClient = () => {
   return(
     <>
     <ContainerWrap>
@@ -19,7 +19,7 @@ const InviteClient = () => {
     </ContainerWrap>
      
     <ContainerBox>
-       <ContainerHeading style={{fontSize:'15px'}}>Invite Admin User</ContainerHeading>
+       <ContainerHeading style={{fontSize:'15px'}}>Admin User</ContainerHeading>
 
        <InputBox>
        <Form>
@@ -31,29 +31,25 @@ const InviteClient = () => {
             <Form.Label><ContainerText>Email</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} />
         </Form.Group><br/>
-        <Form.Group controlId="form.Textarea">
-            <Form.Label><ContainerText>Password</ContainerText></Form.Label>
+        <Form.Group controlId="form.Email">
+            <Form.Label><ContainerText>Role</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} />
         </Form.Group><br/>
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Designation</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} />
-        </Form.Group><br/>
-        <Form.Group controlId="form.Textarea">
-            <Form.Label><ContainerText>Special Comments</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={3} />
         </Form.Group>
       </Form>
        </InputBox>
 
       <br/>
     
-      <Button1 size="sm">Invite</Button1>
-      <Button2 size="sm">Back</Button2>
+      <Button1 size="sm">Edit</Button1>
+      <Button2 size="sm">Delete</Button2>
 
     </ContainerBox>
     </>
   );
 };
 
-export default InviteClient;
+export default ViewClient;

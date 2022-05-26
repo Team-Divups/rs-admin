@@ -1,19 +1,17 @@
-import Footer from './Components/General/Footer/Footer';
-import AddClient from './Components/Modules/Admin/AddClient';
 import {Row,Col} from 'react-bootstrap';
-
+import ViewClientList from './Components/Modules/Admin/ViewClientList';
 
 function App() {
   return (
     <div className="App">
        <Row>
-         <Col sm={4}>
+         <Col sm={3}>
          </Col>
-         <Col sm={4}>
-           <AddClient/>
+         <Col sm={8}>
+           <ViewClientList/>
          </Col>
        </Row>
-      <Footer/>
+    
     </div>
   );
 }
