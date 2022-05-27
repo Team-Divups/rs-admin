@@ -1,0 +1,58 @@
+.container1
+{
+    font-family: 'Asap', sans-serif;
+    color:#0A142F;
+    font-size: 14px;
+    height:340px;
+    background-color: #ECECEC;
+    margin-bottom: -60px;
+}
+
+.image
+{
+   justify-content: center;
+   margin-left:25%;
+   margin-top: 10%;
+}
+
+.title
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 40%;
+}
+
+.container2
+{
+    font-family: 'Asap', sans-serif;
+    color:#0A142F;
+    font-size: 14px;
+    height:40px;
+    background-color: #ECECEC;
+}
+
+
+.Heading
+{
+    font-size: 18px;
+    margin-top: 55px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+.Text
+{
+    margin-bottom: 20px;
+    color: #30303a;
+    font-style: italic;
+    font-weight:lighter;
+}
+
+.copyright
+{
+    font-style: italic;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: flex;
+}
