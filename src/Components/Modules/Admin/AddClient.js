@@ -9,7 +9,9 @@ import {
   Button1,
   Button2
 } from './Styles';
-import { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
 
 
 const AddClient = () => {
@@ -17,12 +19,21 @@ const AddClient = () => {
   const[name,setName]=useState("");
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
-  const[position,setPosition]=useState("");
+  const[designation,setDesignation]=useState("");
+  const[role,setRole]=useState("");
 
-
-  const displayinfo = () =>{
-    console.log(name+email+password+position);
-  }
+  const AddUser = (e) =>{
+    e.preventDefault();
+    axios.post('http://localhost:3001/adminuser/create',{
+      name:name,
+      email:email,
+      password:password,
+      designation : designation,
+      role:role
+    }).then(()=>{
+      alert("New User is Added");
+    })
+  };
 
   return(
     <>
@@ -39,6 +50,7 @@ const AddClient = () => {
             <Form.Label><ContainerText >First Name</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
             type='text' 
+            value={name}
             onChange={(event)=>{
               setName(event.target.value);
             }}/>
@@ -47,7 +59,8 @@ const AddClient = () => {
         <Form.Group controlId="form.Email">
             <Form.Label><ContainerText>Email</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
-            type='text' 
+            type='email' 
+            value={email}
             onChange={(event)=>{
               setEmail(event.target.value);
             }}/>
@@ -56,7 +69,8 @@ const AddClient = () => {
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Password</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
-            type='text' 
+            type='password' 
+            value={password}
             onChange={(event)=>{
               setPassword(event.target.value);
             }}/>
@@ -66,8 +80,19 @@ const AddClient = () => {
             <Form.Label><ContainerText>Designation</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
             type='text' 
+            value={designation}
             onChange={(event)=>{
-              setPosition(event.target.value);
+              setDesignation(event.target.value);
+            }}/>
+        </Form.Group><br/>
+
+        <Form.Group controlId="form.Textarea">
+            <Form.Label><ContainerText>Role</ContainerText></Form.Label>
+            <Form.Control as="textarea" rows={1} 
+            type='text' 
+            value={role}
+            onChange={(event)=>{
+              setRole(event.target.value);
             }}/>
         </Form.Group>
       </Form>
@@ -75,7 +100,7 @@ const AddClient = () => {
 
       <br/>
     
-      <Button1 size="sm" onClick={displayinfo}>Save</Button1>
+      <Button1 size="sm" onClick={AddUser}>Add</Button1>
       <Button2 size="sm">Discard</Button2>
 
     </ContainerBox>
