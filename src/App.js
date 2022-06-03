@@ -1,18 +1,13 @@
-import {Row,Col} from 'react-bootstrap';
-import ViewClientList from './Components/Modules/Admin/ViewClientList';
+import './App.css';
+import ViewClientList from './Components/Admin/ViewClientList';
+import AddClient from './Components/Admin/AddClient';
 
 function App() {
   return (
-    <div className="App">
-       <Row>
-         <Col sm={3}>
-         </Col>
-         <Col sm={8}>
-           <ViewClientList/>
-         </Col>
-       </Row>
-    
-    </div>
+      <>
+        <ViewClientList/>
+        <AddClient/>
+      </>
   );
 }
 

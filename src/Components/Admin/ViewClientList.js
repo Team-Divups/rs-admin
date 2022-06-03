@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaRegAddressCard, FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import{
+  Button,
     Card,
     CardBody,
     CardSubtitle,
@@ -10,28 +11,52 @@ import{
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import user2 from "../../../Assets/user2.jpg";
+import user2 from "../../Assets/user2.jpg";
+
 
 const ViewClientList= ()=> {
 
   const [userData,setUserData]= useState([]);
 
-   // Using useEffect to call the API once mounted and set the data
-   useEffect(() => {(async (e) => {
-      e.preventDefault();
-      const result = await axios("http://localhost:3001/adminuser");
-      setUserData(result.data);})
-      ();
-  }, []);
+  //to get data when the application loads
+  useEffect( () =>{
+    axios.get("http://localhost:3001/adminuser").then(
+      (response)=>{
+        setUserData(response.data);
+      })
+  },[])
+
+  
+  const onDelete =(id)=>{
+    axios.delete(`http://localhost:3001/adminuser/delete/${id}`).then(
+      (response)=>{
+        setUserData(userData.filter((val)=>{
+          return(
+            val.id !== id
+          )
+        }))
+      }
+    )
+  }
+
+
+  const DeleteAll = () =>{
+    axios.delete("http://localhost:3001/adminuser")
+  }
+
 
     return(
         <>
-        <Card>
+        <Card style={{padding:"30px 100px 10px 100px"}}>
             <CardBody>
                 <CardTitle tag="h5">All Admin Users</CardTitle>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">Overview of Users</CardSubtitle>
-               
-                <Table className="no-wrap mt-3 align-middle" responsive >
+                <div>
+                      <Button className="no-wrap mt-3">Add a new User</Button>
+                      <Button className="no-wrap mt-3 " onClick={DeleteAll}>Delete All</Button>
+                </div>
+         
+                <Table className="no-wrap mt-3 align-middle" responsive striped>
                    <thead>
                        <tr>
                            <th>User</th>
@@ -65,9 +90,10 @@ const ViewClientList= ()=> {
                            
                            <td>
                               <tr>
-                                <td><FaRegEdit/></td>
-                                <td><FaRegAddressCard/></td>
-                                <td><FaTrashAlt/></td>
+                                <td><Button><FaRegEdit/></Button></td>
+                                <td><Button onClick={()=>onDelete(tdata.id)}><FaTrashAlt/></Button></td>
+                                <td><Button><FaRegAddressCard/></Button></td>
+                               
                               </tr>
                            </td>
                          </tr>
@@ -77,6 +103,7 @@ const ViewClientList= ()=> {
                 </Table>
             </CardBody>
         </Card>
+
         </>
     );
 }
