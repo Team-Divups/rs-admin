@@ -1,8 +1,6 @@
 import { useState,useEffect} from "react";
 import axios from "axios";
 import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
-import { ContainerText } from "./Styles";
-
 
 const ViewAdmin = (props) =>{
 
@@ -24,29 +22,38 @@ const ViewAdmin = (props) =>{
                     <div>
                         <Form>
                             <FormGroup>
-                                <FormLabel><ContainerText>Name</ContainerText></FormLabel>
-                                <ContainerText>{val.name}</ContainerText>
-                                <FormControl value={val.name}/>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl 
+                                readOnly="True"
+                                value={val.name}/>
                             </FormGroup>
 
                             <FormGroup>
-                                <FormLabel><ContainerText>Email</ContainerText></FormLabel>
-                                <FormControl value={val.email}/>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl 
+                                readOnly="True"
+                                value={val.email}/>
                             </FormGroup>
 
                             <FormGroup>
-                                <FormLabel><ContainerText>Organization</ContainerText></FormLabel>
-                                <FormControl value={val.organization}/>
+                                <FormLabel>Organization</FormLabel>
+                                <FormControl 
+                                readOnly="True"
+                                value={val.organization}/>
                             </FormGroup>
 
                             <FormGroup>
-                                <FormLabel><ContainerText>Designation</ContainerText></FormLabel>
-                                <FormControl value={val.designation}/>
+                                <FormLabel>Designation</FormLabel>
+                                <FormControl 
+                                readOnly="True"
+                                value={val.designation}/>
                             </FormGroup>
 
                             <FormGroup>
-                                <FormLabel><ContainerText>Role</ContainerText></FormLabel>
-                                <FormControl value={val.role}/>
+                                <FormLabel>Role</FormLabel>
+                                <FormControl 
+                                readOnly="True"
+                                value={val.role}/>
                             </FormGroup>
                         </Form>
                     </div>

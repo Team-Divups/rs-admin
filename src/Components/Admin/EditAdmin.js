@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Form, FormControl, FormLabel } from "react-bootstrap";
-import { Button, FormGroup } from "reactstrap";
+import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { Button} from "reactstrap";
 
 
 const EditAdmin = (props)=>{
@@ -12,6 +12,7 @@ const EditAdmin = (props)=>{
     const[organization,setNewOrganization]=useState("");
     const[designation,setNewDesignation]=useState("");
     const[role,setNewRole]=useState("");
+    const[status,setNewStatus]=useState("");
     
     const[AdminData,setAdminData]=useState([]);
 
@@ -32,12 +33,22 @@ const EditAdmin = (props)=>{
             organization:organization,
             designation:designation,
             role:role,
+            status:status,
             id:id
         }).then(()=>{
             alert("User Details Updated");
         })
     }
 
+
+    const EditName = (id) =>{
+        axios.put(`http://localhost:3001/adminuser/editname`,{
+            name:name,
+            id:id
+        }).then(()=>{
+            alert("User Details Updated");
+        })
+    }
 
     return(
         <>
@@ -51,6 +62,7 @@ const EditAdmin = (props)=>{
                                    placeholder={val.name}
                                    onChange={(e)=>{setNewName(e.target.value);}}
                                 />
+                                <Button onClick={()=>{EditName(props.id)}}>Update</Button>
                             </FormGroup>
 
                             <FormGroup>
@@ -84,7 +96,16 @@ const EditAdmin = (props)=>{
                                     onChange={(e)=>{setNewRole(e.target.value);}}
                                 />
                             </FormGroup>
-                        </Form>
+
+                            <FormGroup>
+                                <FormLabel>Status ( joined/invited/declined) </FormLabel>
+                                <FormControl 
+                                    placeholder={val.status}
+                                    onChange={(e)=>{setNewStatus(e.target.value);}}
+                                />
+                            </FormGroup>
+
+                        </Form><br/>
 
                         <Button onClick={()=>{EditUser(props.id)}}>Update</Button>
                     </div>

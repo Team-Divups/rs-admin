@@ -1,5 +1,4 @@
 import { Form} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   ContainerHeading,
   ContainerText,
@@ -22,6 +21,7 @@ const AddAdmin = () => {
   const[organization,setOrganization]=useState("");
   const[designation,setDesignation]=useState("");
   const[role,setRole]=useState("");
+  const[comment,setComment]=useState("");
 
   const AddUser = (e) =>{
     e.preventDefault();
@@ -31,7 +31,9 @@ const AddAdmin = () => {
       password:password,
       organization:organization,
       designation : designation,
-      role:role
+      role:role,
+      comments:comment,
+      status:"joined"
     }).then(()=>{
       alert("New User is Added");
     })
@@ -105,6 +107,16 @@ const AddAdmin = () => {
             value={role}
             onChange={(event)=>{
               setRole(event.target.value);
+            }}/>
+        </Form.Group>
+
+        <Form.Group controlId="form.Textarea">
+            <Form.Label><ContainerText>Special Comments</ContainerText></Form.Label>
+            <Form.Control as="textarea" rows={2} 
+            type='text' 
+            value={comment}
+            onChange={(event)=>{
+              setComment(event.target.value);
             }}/>
         </Form.Group>
       </Form>
