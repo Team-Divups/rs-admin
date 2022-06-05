@@ -9,10 +9,40 @@ import {
   Button1,
   Button2
 } from './Styles';
+import { useState } from "react";
+import axios from "axios";
 
 
-//insert data in a new database
 const InviteAdmin = () => {
+
+  const[name,setName]=useState("");
+  const[email,setEmail]=useState("");
+  const[password,setPassword]=useState("");
+  const[organization,setOrganization]=useState("");
+  const[designation,setDesignation]=useState("");
+  const[role,setRole]=useState("");
+  const[comment,setComment]=useState("");
+
+  //invite an user
+  const InviteUser =(e)=>{
+    e.preventDefault();
+    axios.post("http://localhost:3001/adminuser/invite",{
+      name:name,
+      email:email,
+      password:password,
+      organization:organization,
+      designation:designation,
+      role:role,
+      comments:comment,
+      status:"invited"
+    }).then(
+      ()=>{
+        alert("user invited");
+      }
+    )
+
+
+  }
   return(
     <>
     <ContainerWrap>
@@ -26,30 +56,73 @@ const InviteAdmin = () => {
        <Form>
         <Form.Group controlId="form.Name">
             <Form.Label><ContainerText >First Name</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={1}/>
+            <Form.Control as="textarea" rows={1}
+              type="text"
+              value={name}
+              onChange={(e)=>{setName(e.target.value);}}
+            />
         </Form.Group><br/>
+
         <Form.Group controlId="form.Email">
             <Form.Label><ContainerText>Email</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={1} />
+            <Form.Control as="textarea" rows={1} 
+              type="email"
+              value={email}
+              onChange={(e)=>{setEmail(e.target.value);}}
+            />
         </Form.Group><br/>
+
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Password</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={1} />
+            <Form.Control as="textarea" rows={1} 
+              type="password"
+              value={password}
+              onChange={(e)=>{setPassword(e.target.value);}}
+            />
         </Form.Group><br/>
+
+        <Form.Group controlId="form.Textarea">
+            <Form.Label><ContainerText>Organization</ContainerText></Form.Label>
+            <Form.Control as="textarea" rows={1} 
+              type="text"
+              value={organization}
+              onChange={(e)=>{setOrganization(e.target.value);}}
+            />
+        </Form.Group><br/>
+
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Designation</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={1} />
+            <Form.Control as="textarea" rows={1} 
+              type="text"
+              value={designation}
+              onChange={(e)=>{setDesignation(e.target.value);}}
+            />
         </Form.Group><br/>
+
+        <Form.Group controlId="form.Textarea">
+            <Form.Label><ContainerText>Role</ContainerText></Form.Label>
+            <Form.Control as="textarea" rows={1} 
+              type="text"
+              value={role}
+              onChange={(e)=>{setRole(e.target.value);}}
+            />
+        </Form.Group><br/>
+
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Special Comments</ContainerText></Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control as="textarea" rows={3} 
+              type="text"
+              value={comment}
+              onChange={(e)=>{setComment(e.target.value);}}
+            />
         </Form.Group>
+
       </Form>
        </InputBox>
 
       <br/>
     
-      <Button1 size="sm">Invite</Button1>
+      <Button1 size="sm" onClick={InviteUser}>Invite</Button1>
       <Button2 size="sm">Back</Button2>
 
     </ContainerBox>

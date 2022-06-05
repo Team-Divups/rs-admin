@@ -88,6 +88,7 @@ const ViewAdminList= ()=> {
                            <th>Organization</th>
                            <th>Designation</th>
                            <th>Role</th>
+                           <th>Status</th>
                            <th>Joined on</th>
                            <th>Actions</th>
                        </tr>
@@ -114,6 +115,15 @@ const ViewAdminList= ()=> {
                            <td>{tdata.organization}</td>
                            <td>{tdata.designation}</td>
                            <td>{tdata.role}</td>
+                           <td>
+                               {tdata.status === "joined" ? (
+                                  <span className="p-2 bg-success rounded-circle d-inline-block ms-3"></span>
+                            ) : tdata.status === "invited" ? (
+                                  <span className="p-2 bg-warning rounded-circle d-inline-block ms-3"></span>
+                            ) : (
+                                  <span className="p-2 bg-danger rounded-circle d-inline-block ms-3"></span>
+                                )}
+                           </td>
                            <td>{tdata.joined_date}</td>
                            
                            <td>
@@ -146,19 +156,18 @@ const ViewAdminList= ()=> {
 
 
         {/* modal to edit Admin*/}
-        <Modal isOpen={showEdit}>
-          <ModalHeader >Edit Admin User</ModalHeader>
+        <Modal isOpen={showEdit} >
+          <ModalHeader  toggle={CloseEditModal} >Edit Admin User</ModalHeader>
           <ModalBody>
             <EditAdmin id={userId}/>
-            <Button onClick={CloseEditModal}>Cancel</Button>
           </ModalBody>
         </Modal>
 
 
 
         {/* modal to View Admin*/}
-        <Modal isOpen={showView}>
-          <ModalHeader >Admin User</ModalHeader>
+        <Modal isOpen={showView} toggle={CloseViewModal}>
+          <ModalHeader togagle={CloseViewModal}>Admin User</ModalHeader>
           <ModalBody>
             <ViewAdmin id={userId}/>
           </ModalBody>
@@ -172,7 +181,7 @@ const ViewAdminList= ()=> {
 
         {/* Modal to delete a user*/}
         <Modal isOpen={showDelete}>
-          <ModalHeader>Delete Confirmation</ModalHeader>
+          <ModalHeader toggle={CloseDeleteModal}>Delete Confirmation</ModalHeader>
           <ModalBody>
             <p>Are you sure you want to delete ?</p>
           </ModalBody>
