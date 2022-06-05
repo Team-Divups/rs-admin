@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container } from 'react-bootstrap';
 //import { Helmet } from 'react-helmet-async';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 
 const AddRole = () => {
   const [state, setState] = useState(initialState);
-  let history = useHistory();
+  const navigate = useNavigate();
   const { roleName, roleDescription, created_at } = initialState;
 
   const addRole = async (data) => {
@@ -28,7 +28,7 @@ const AddRole = () => {
       toast.error('Please provide value into each field');
     } else {
       addRole(state);
-      history.push('/roles');
+      navigate('/roles');
     }
   };
   const handleInputChange = (e) => {
@@ -41,7 +41,7 @@ const AddRole = () => {
         {/* <Helmet>
           <title>Add/Edit Roles</title>
         </Helmet> */}
-        <h1 className="my-3">Add/Edit Roles </h1>
+        <h1 className="my-3">Add Roles </h1>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group
             className="mb-3"
@@ -74,7 +74,7 @@ const AddRole = () => {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary">Submit</Button>
+            <Button variant="primary">Add Role</Button>
           </div>
         </Form>
       </Container>
