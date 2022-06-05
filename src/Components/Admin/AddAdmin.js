@@ -19,6 +19,7 @@ const AddAdmin = () => {
   const[name,setName]=useState("");
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
+  const[organization,setOrganization]=useState("");
   const[designation,setDesignation]=useState("");
   const[role,setRole]=useState("");
 
@@ -28,6 +29,7 @@ const AddAdmin = () => {
       name:name,
       email:email,
       password:password,
+      organization:organization,
       designation : designation,
       role:role
     }).then(()=>{
@@ -73,6 +75,16 @@ const AddAdmin = () => {
             value={password}
             onChange={(event)=>{
               setPassword(event.target.value);
+            }}/>
+        </Form.Group><br/>
+
+        <Form.Group controlId="form.Textarea">
+            <Form.Label><ContainerText>Organization</ContainerText></Form.Label>
+            <Form.Control as="textarea" rows={1} 
+            type='text' 
+            value={organization}
+            onChange={(event)=>{
+              setOrganization(event.target.value);
             }}/>
         </Form.Group><br/>
 

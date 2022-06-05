@@ -18,7 +18,7 @@ const Admin = () =>{
                                </Button>
                             </div>
                             <Routes>
-                               <Route exact path='/user' element={<ViewAdminList/>}>All Admin users</Route>
+                               <Route exact path='/' element={<ViewAdminList/>}>All Admin users</Route>
                                <Route path='/createuser' element={<AddAdmin/>}>Add a new user</Route>
                             </Routes>
                         </CardBody>

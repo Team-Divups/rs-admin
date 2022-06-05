@@ -25,28 +25,29 @@ const ViewAdmin = (props) =>{
                         <Form>
                             <FormGroup>
                                 <FormLabel><ContainerText>Name</ContainerText></FormLabel>
+                                <ContainerText>{val.name}</ContainerText>
                                 <FormControl value={val.name}/>
-                            </FormGroup><br/>
+                            </FormGroup>
 
                             <FormGroup>
                                 <FormLabel><ContainerText>Email</ContainerText></FormLabel>
                                 <FormControl value={val.email}/>
-                            </FormGroup><br/>
+                            </FormGroup>
 
                             <FormGroup>
                                 <FormLabel><ContainerText>Organization</ContainerText></FormLabel>
                                 <FormControl value={val.organization}/>
-                            </FormGroup><br/>
+                            </FormGroup>
 
                             <FormGroup>
                                 <FormLabel><ContainerText>Designation</ContainerText></FormLabel>
                                 <FormControl value={val.designation}/>
-                            </FormGroup><br/>
+                            </FormGroup>
 
                             <FormGroup>
                                 <FormLabel><ContainerText>Role</ContainerText></FormLabel>
                                 <FormControl value={val.role}/>
-                            </FormGroup><br/>
+                            </FormGroup>
                         </Form>
                     </div>
                 )

@@ -1,14 +1,10 @@
-import './App.css';
-import ViewClientList from './Components/Admin/ViewClientList';
-import AddClient from './Components/Admin/AddClient';
+import Admin from "./Components/Admin/Admin";
 
-function App() {
-  return (
-      <>
-        <ViewClientList/>
-        <AddClient/>
-      </>
-  );
+const App = () => {
+  return(
+    <>
+      <Admin/>
+    </>
+  )
 }
-
 export default App;
