@@ -53,12 +53,12 @@ const ViewRoles = () => {
                     <td>{item.desc}</td>
                     <td>{item.created_at}</td>
                     <td>
-                      <Link to={`update/${item.id}`}>
+                      <Link to={`/roles/update/${item.id}`}>
                         <Button variant="outline-success" size="sm">
                           Edit
                         </Button>
                       </Link>
-                      <Link to={`view/${item.id}`}>
+                      <Link to={`/roles/view/${item.id}`}>
                         <Button variant="outline-primary" size="sm">
                           View
                         </Button>
