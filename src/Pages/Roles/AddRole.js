@@ -74,7 +74,9 @@ const AddRole = () => {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary">Add Role</Button>
+            <Button variant="primary" value="add">
+              Add Role
+            </Button>
           </div>
         </Form>
       </Container>

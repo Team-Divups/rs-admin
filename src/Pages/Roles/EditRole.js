@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container } from 'react-bootstrap';
 //import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 const initialState = {
   roleName: '',
@@ -16,8 +17,22 @@ const EditRole = () => {
   const navigate = useNavigate();
   const { roleName, roleDescription, created_at } = initialState;
 
-  const addRole = async (data) => {
-    const response = await axios.post('http://loacalhost:4000/roles', data);
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      getSingleRole(id);
+    }
+  }, [id]);
+
+  const getSingleRole = async (id) => {
+    const response = await axios.get(`http://loacalhost:4000/role/${id}`);
+    if (response.status === 200) {
+      setState({ ...response.data[0] });
+    }
+  };
+  const updateRole = async (data, id) => {
+    const response = await axios.put(`http://loacalhost:4000/role/${id}`, data);
     if (response.status === 200) {
       toast.success(response.data);
     }
@@ -26,11 +41,14 @@ const EditRole = () => {
     e.preventDefault();
     if (!roleName || !roleDescription || !created_at) {
       toast.error('Please provide value into each field');
-    } else {
-      addRole(state);
-      navigate('/roles');
     }
+    if (id) {
+      updateRole(state, id);
+    }
+
+    navigate('/roles');
   };
+
   const handleInputChange = (e) => {
     let { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -41,7 +59,7 @@ const EditRole = () => {
         {/* <Helmet>
           <title>Add/Edit Roles</title>
         </Helmet> */}
-        <h1 className="my-3">Add Roles </h1>
+        <h1 className="my-3">Edit Roles </h1>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group
             className="mb-3"
@@ -74,7 +92,9 @@ const EditRole = () => {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary">Edit Role</Button>
+            <Button variant="primary" value="update">
+              Edit Role
+            </Button>
           </div>
         </Form>
       </Container>
