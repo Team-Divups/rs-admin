@@ -5,6 +5,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import './AddRole.css';
 
 const initialState = {
   roleName: '',
@@ -55,11 +56,11 @@ const EditRole = () => {
   };
   return (
     <div>
-      <Container style={{ maxWidth: '600px ', marginTop: '100px' }}>
+      <Container className="EditRole">
         {/* <Helmet>
           <title>Add/Edit Roles</title>
         </Helmet> */}
-        <h1 className="my-3">Edit Roles </h1>
+        <h1 className="my-3">Update Roles </h1>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group
             className="mb-3"
@@ -92,8 +93,11 @@ const EditRole = () => {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary" value="update">
-              Edit Role
+            <Button variant="danger" value="add">
+              Discard
+            </Button>
+            <Button variant="primary" value="add">
+              Add
             </Button>
           </div>
         </Form>
