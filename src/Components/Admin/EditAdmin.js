@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { Button} from "reactstrap";
+import { AdminSchema } from "./AdminValidation";
 
 
 const EditAdmin = (props)=>{
@@ -15,6 +16,12 @@ const EditAdmin = (props)=>{
     const[status,setNewStatus]=useState("");
     
     const[AdminData,setAdminData]=useState([]);
+    const [value,setValue] = useState();
+
+    const refresh = ()=>{
+      // it re-renders the component
+     setValue({});
+}
 
     //To load data
     useEffect( () =>{
@@ -26,18 +33,19 @@ const EditAdmin = (props)=>{
 
 
     //update data
-    const EditUser = (id)=>{
-        axios.put(`http://localhost:3001/adminuser/edit`,{
-            name:name,
-            email:email,
-            organization:organization,
-            designation:designation,
-            role:role,
-            status:status,
-            id:id
-        }).then(()=>{
-            alert("User Details Updated");
-        })
+    const EditUser = async (id)=>{
+                await axios.put(`http://localhost:3001/adminuser/edit`,{
+                   name:name,
+                   email:email,
+                   organization:organization,
+                   designation:designation,
+                   role:role,
+                   status:status,
+                   id:id
+                }).then(()=>{
+                    alert("User Details Updated");
+                    refresh();
+                })
     }
 
 
