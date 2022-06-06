@@ -11,6 +11,7 @@ import {
 } from './Styles';
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const InviteAdmin = () => {
@@ -23,6 +24,8 @@ const InviteAdmin = () => {
   const[role,setRole]=useState("");
   const[comment,setComment]=useState("");
 
+  const history = useNavigate();
+  
   //invite an user
   const InviteUser =(e)=>{
     e.preventDefault();
@@ -123,7 +126,7 @@ const InviteAdmin = () => {
       <br/>
     
       <Button1 size="sm" onClick={InviteUser}>Invite</Button1>
-      <Button2 size="sm">Back</Button2>
+      <Button2 size="sm"  onClick={() => history('/')}>Back</Button2>
 
     </ContainerBox>
     </>

@@ -1,16 +1,17 @@
-import { Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import {
   ContainerHeading,
   ContainerText,
   ContainerWrap,
   ContainerBox,
   InputBox,
-  Button1,
-  Button2
+  Button2,
+  Button1
 } from './Styles';
 import React, { useState } from "react";
 import axios from "axios";
-
+import { AdminSchema } from "./AdminValidation";
+import { useNavigate } from "react-router-dom";
 
 
 const AddAdmin = () => {
@@ -22,21 +23,37 @@ const AddAdmin = () => {
   const[designation,setDesignation]=useState("");
   const[role,setRole]=useState("");
   const[comment,setComment]=useState("");
+  
+  const history = useNavigate();
+  const AddUser = async (e) =>{
 
-  const AddUser = (e) =>{
-    e.preventDefault();
-    axios.post('http://localhost:3001/adminuser/create',{
-      name:name,
-      email:email,
-      password:password,
-      organization:organization,
-      designation : designation,
-      role:role,
-      comments:comment,
-      status:"joined"
-    }).then(()=>{
-      alert("New User is Added");
-    })
+    const isValid= await AdminSchema.isValid(
+      {
+        name,
+        email,
+        password,
+        organization,
+        designation,
+        role,
+        comment
+      });
+
+      if(isValid){
+        axios.post('http://localhost:3001/adminuser/create',{
+        name:name,
+        email:email,
+        password:password,
+        organization:organization,
+        designation : designation,
+        role:role,
+        comments:comment,
+        status:"joined"
+        }).then(()=>{
+          alert("New User is Added");
+      })
+    }else {
+      alert("Validation errors");
+    }  
   };
 
   return(
@@ -49,7 +66,7 @@ const AddAdmin = () => {
        <ContainerHeading style={{fontSize:'15px'}}>Create New Admin User</ContainerHeading>
 
        <InputBox>
-       <Form>
+       <Form noValidate>
         <Form.Group controlId="form.Name">
             <Form.Label><ContainerText >First Name</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
@@ -57,18 +74,23 @@ const AddAdmin = () => {
             value={name}
             onChange={(event)=>{
               setName(event.target.value);
-            }}/>
-        </Form.Group><br/>
+            }}
+            />
+            <Form.Control.Feedback type='invalid'>Name should be between 3 to 20 characters</Form.Control.Feedback>
+        </Form.Group>
+        <br/>
 
         <Form.Group controlId="form.Email">
             <Form.Label><ContainerText>Email</ContainerText></Form.Label>
             <Form.Control as="textarea" rows={1} 
-            type='email' 
+            type='email'
             value={email}
             onChange={(event)=>{
               setEmail(event.target.value);
             }}/>
-        </Form.Group><br/>
+             <Form.Control.Feedback type='invalid'>Invalid email</Form.Control.Feedback>
+        </Form.Group>
+        <br/>
 
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Password</ContainerText></Form.Label>
@@ -77,8 +99,11 @@ const AddAdmin = () => {
             value={password}
             onChange={(event)=>{
               setPassword(event.target.value);
-            }}/>
-        </Form.Group><br/>
+            }}
+            />
+            <Form.Control.Feedback type='invalid'>Name should be between 3 to 20 characters</Form.Control.Feedback>
+        </Form.Group>
+        <br/>
 
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Organization</ContainerText></Form.Label>
@@ -88,7 +113,8 @@ const AddAdmin = () => {
             onChange={(event)=>{
               setOrganization(event.target.value);
             }}/>
-        </Form.Group><br/>
+        </Form.Group>
+        <br/>
 
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Designation</ContainerText></Form.Label>
@@ -98,7 +124,9 @@ const AddAdmin = () => {
             onChange={(event)=>{
               setDesignation(event.target.value);
             }}/>
-        </Form.Group><br/>
+        </Form.Group>
+      
+        <br/>
 
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Role</ContainerText></Form.Label>
@@ -109,6 +137,8 @@ const AddAdmin = () => {
               setRole(event.target.value);
             }}/>
         </Form.Group>
+       
+        <br/>
 
         <Form.Group controlId="form.Textarea">
             <Form.Label><ContainerText>Special Comments</ContainerText></Form.Label>
@@ -119,13 +149,14 @@ const AddAdmin = () => {
               setComment(event.target.value);
             }}/>
         </Form.Group>
+    
       </Form>
        </InputBox>
 
       <br/>
     
-      <Button1 size="sm" onClick={AddUser}>Add</Button1>
-      <Button2 size="sm">Discard</Button2>
+      <Button1 onClick={AddUser}>Add</Button1>
+      <Button2 size="sm" onClick={() => history('/')}>Discard</Button2>
 
     </ContainerBox>
     </>
