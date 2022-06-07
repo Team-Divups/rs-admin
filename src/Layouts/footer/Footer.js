@@ -25,10 +25,10 @@ return (
 
 		<Column>
 			<Heading>Learn More</Heading>
-			<FooterLink href="#">About BizStat</FooterLink>
-			<FooterLink href="#">Our Team</FooterLink>
-			<FooterLink href="#">Privacy Policy</FooterLink>
-			<FooterLink href="#">Other</FooterLink>
+			<FooterLink >About BizStat</FooterLink>
+			<FooterLink >Our Team</FooterLink>
+			<FooterLink >Privacy Policy</FooterLink>
+			<FooterLink >Other</FooterLink>
 		</Column>
 
 		<Column>

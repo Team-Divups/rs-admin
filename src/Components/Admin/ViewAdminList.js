@@ -3,21 +3,22 @@ import{
   Button,
     Card,
     CardBody,
-    CardSubtitle,
-    CardTitle,
     Modal,
     ModalBody,
     ModalFooter,
     ModalHeader,
     Table,  
 } from "reactstrap";
+import { ContainerHeading } from './Styles';
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 import user2 from "../../Assets/user.png";
 import EditAdmin from './EditAdmin';
 import ViewAdmin from './ViewAdmin';
+
 
 
 const ViewAdminList= ()=> {
@@ -36,6 +37,7 @@ const ViewAdminList= ()=> {
       })
   },[])
 
+  
   //To delete a specific user by id
   const onDelete =(id)=>{
     axios.delete(`http://localhost:3001/adminuser/delete/${id}`).then(
@@ -72,13 +74,26 @@ const ViewAdminList= ()=> {
 
     return(
         <>
-        <Card style={{padding:"30px 100px 10px 100px"}}>
+        <Card>
             <CardBody>
-                <CardTitle tag="h5">All Admin Users</CardTitle>
-                <CardSubtitle className="mb-2 text-muted" tag="h6">Overview of Users</CardSubtitle>
-                <div>
-                      <Button className="no-wrap mt-3 " onClick={DeleteAll}>Delete All</Button>
-                </div>
+                <ContainerHeading>Overview of Admin Users</ContainerHeading>
+                      <tr>
+                        <td>
+                          <Link to='/adminusers/new'>
+                            <Button>New User +</Button>
+                          </Link>
+                        </td>
+                        <td>
+                          <Link to='/adminusers/invite'>
+                            <Button>Invite User </Button>
+                          </Link>
+                        </td>
+                      </tr>
+                      
+                      <span style={{paddingLeft:'90%',marginBottom:'25px'}}>
+                        <Button className="no-wrap mt-3 " onClick={DeleteAll}>Delete All</Button>
+                      </span>
+                   
                 
                 {/* Admin table  */}
                 <Table className="no-wrap mt-3 align-middle" responsive striped>
@@ -143,6 +158,7 @@ const ViewAdminList= ()=> {
                                       <FaRegAddressCard/>
                                    </Button>
                                 </td>
+                            
                               </tr>
                            </td>
 
@@ -190,6 +206,8 @@ const ViewAdminList= ()=> {
             <Button onClick={CloseDeleteModal}>No,Go Back</Button>
           </ModalFooter>
         </Modal>
+
+      
 
         </>
     );

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { FormSelect } from "react-bootstrap";
 import { Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { FaRegEdit } from "react-icons/fa";
 import { Button} from "reactstrap";
-import { AdminSchema } from "./AdminValidation";
 
 
 const EditAdmin = (props)=>{
@@ -16,13 +17,7 @@ const EditAdmin = (props)=>{
     const[status,setNewStatus]=useState("");
     
     const[AdminData,setAdminData]=useState([]);
-    const [value,setValue] = useState();
-
-    const refresh = ()=>{
-      // it re-renders the component
-     setValue({});
-}
-
+    
     //To load data
     useEffect( () =>{
         axios.get(`http://localhost:3001/adminuser/${props.id}`).then(
@@ -44,7 +39,6 @@ const EditAdmin = (props)=>{
                    id:id
                 }).then(()=>{
                     alert("User Details Updated");
-                    refresh();
                 })
     }
 
@@ -66,19 +60,30 @@ const EditAdmin = (props)=>{
                         <Form>
                             <FormGroup>
                                 <FormLabel>Name</FormLabel>
-                                <FormControl   
-                                   placeholder={val.name}
-                                   onChange={(e)=>{setNewName(e.target.value);}}
-                                />
-                                <Button onClick={()=>{EditName(props.id)}}>Update</Button>
+                                <tr>
+                                    <td rowSpan={2}>
+                                        <FormControl   
+                                        defaultValue={val.name}
+                                        onChange={(e)=>{setNewName(e.target.value);}}
+                                        />
+                                    </td>
+                                    <td style={{paddingLeft:'10px'}}><Button onClick={()=>{EditName(props.id)}}><FaRegEdit/></Button></td>
+                                </tr>
                             </FormGroup>
 
                             <FormGroup>
                                 <FormLabel>Email</FormLabel>
-                                <FormControl 
-                                   placeholder={val.email}
-                                   onChange={(e)=>{setNewEmail(e.target.value);}}    
-                                />
+                                <tr>
+                                    <td style={{paddingRight:'30px'}}>
+                                        <FormControl 
+                                        defaultValue={val.email}
+                                        onChange={(e)=>{setNewEmail(e.target.value);}}    
+                                        />
+                                    </td>
+                                    <td style={{paddingLeft:'10px'}}>
+                                       <Button onClick={()=>{EditName(props.id)}}><FaRegEdit/></Button>
+                                    </td>
+                                </tr>
                             </FormGroup>
 
                             <FormGroup>
@@ -106,8 +111,8 @@ const EditAdmin = (props)=>{
                             </FormGroup>
 
                             <FormGroup>
-                                <FormLabel>Status ( joined/invited/declined) </FormLabel>
-                                <FormControl 
+                                <FormLabel>Status</FormLabel>
+                                <FormControl
                                     placeholder={val.status}
                                     onChange={(e)=>{setNewStatus(e.target.value);}}
                                 />

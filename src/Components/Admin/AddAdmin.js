@@ -4,7 +4,6 @@ import {
   ContainerText,
   ContainerWrap,
   ContainerBox,
-  InputBox,
   Button2,
   Button1
 } from './Styles';
@@ -65,7 +64,7 @@ const AddAdmin = () => {
     <ContainerBox>
        <ContainerHeading style={{fontSize:'15px'}}>Create New Admin User</ContainerHeading>
 
-       <InputBox>
+ 
        <Form noValidate>
         <Form.Group controlId="form.Name">
             <Form.Label><ContainerText >First Name</ContainerText></Form.Label>
@@ -151,7 +150,7 @@ const AddAdmin = () => {
         </Form.Group>
     
       </Form>
-       </InputBox>
+  
 
       <br/>
     

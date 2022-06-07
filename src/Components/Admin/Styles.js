@@ -40,11 +40,14 @@ export const ContainerHeading = styled.p`
     font-size: 18px;
     font-weight: bold;
     font-family: 'Mulish', sans-serif;
+    text-align:center;
 `
 
 export const ContainerText = styled.p`
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: bold;
     font-family: 'Asap', sans-serif;
+    color:grey;
 `
 
 export const ContainerWrap = styled.div`
